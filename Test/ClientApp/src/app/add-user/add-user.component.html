@@ -1,0 +1,25 @@
+<h2>Чтобы добавить пользователя, необходимо ввести его ФИО</h2>
+
+<p></p>
+
+<ul>
+  <li>
+    <p>Фамилия</p>
+    <input name="lastName" [(ngModel)]="lastName" />
+    <p></p>
+  </li>
+  <li>
+    <p>Имя</p>
+    <input name="firstName" [(ngModel)]="firstName" />
+    <p></p>
+  </li>
+  <li>
+    <p>Отчество</p>
+    <input name="fatherName" [(ngModel)]="fatherName">
+    <p></p>
+  </li>
+  <li>
+    <button (click)="CreateUser()">Создать пользователя</button>
+  </li>
+</ul>
+

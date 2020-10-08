@@ -1,0 +1,41 @@
+<h2>Чтобы найти пользователя, необходимо ввести его ФИО</h2>
+
+<table>
+  <thead>
+    <tr>
+      <td>Фамилия</td>
+      <td>Имя</td>
+      <td>Отчество</td>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>
+        <input name="lastName" [(ngModel)]="lastName" />
+      </td>
+      <td>
+        <input name="firstName" [(ngModel)]="firstName" />
+      </td>
+      <td>
+        <input name="fatherName" [(ngModel)]="fatherName">
+      </td>
+      <td>
+        <button (click)="findUsers()">Найти</button>
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+<div *ngIf="getResult">
+  <p></p>
+  <div *ngIf="checkNotNull; else NotFindUsers">
+    <ul>
+      <li *ngFor="let user of users">
+        <a [routerLink]="['/user-profile', user.id]">{{user.lastName}} {{user.firstName}} {{user.fatherName}}</a>
+      </li>
+    </ul>
+  </div>
+  <ng-template #NotFindUsers>
+    <p>Пользователи не найдены</p>
+  </ng-template>
+</div>

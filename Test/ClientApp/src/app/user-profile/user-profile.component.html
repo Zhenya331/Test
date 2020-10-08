@@ -1,0 +1,57 @@
+<h1>Информация о пользователе:</h1>
+
+<table>
+  <thead>
+    <tr>
+      <td>Id</td>
+      <td>Фамилия</td>
+      <td>Имя</td>
+      <td>Отчество</td>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>
+        <input name="id" [(ngModel)]="id" disabled />
+      </td>
+      <td>
+        <input name="lastName" [(ngModel)]="lastName" disabled="{{forUpdateUser}}" />
+      </td>
+      <td>
+        <input name="firstName" [(ngModel)]="firstName" disabled="{{forUpdateUser}}" />
+      </td>
+      <td>
+        <input name="fatherName" [(ngModel)]="fatherName" disabled="{{forUpdateUser}}" />
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <button id="changeName" (click)="ChangeName()">Изменить ФИО</button>
+        <button id="saveChanges" (click)="SaveChanges()">Сохранить</button>
+      </td>
+      <td>
+        <button (click)="ShowPhoto()">Показать фотографии</button>
+      </td>
+      <td>
+        <button class="redButton" (click)="DeleteUser()">Удалить пользователя</button>
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+
+<div *ngIf="showimages">
+  <p></p>
+  <input type="file" #file (change)="uploadFile(file.files)" />
+  <img [src]="url" />
+  <button (click)="AddImage()">Добавить фото</button>
+  <p></p>
+
+  <ul>
+    <li *ngFor="let img of images">
+      <p>Id фото в бд: {{img.id}}</p>
+      <img [src]="img.url" />
+      <button (click)="DeleteImage(img.id)">Удалить фото</button>
+    </li>
+  </ul>
+</div>

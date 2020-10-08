@@ -1,0 +1,30 @@
+<h2>Welcome</h2>
+<h3>Пожалуйста, загрузите изображение для получения результата</h3>
+<p></p>
+<div>
+  <input type="file" #file (change)="uploadFile(file.files)" />
+  <img [src]="url" />
+
+  <div *ngIf="nullUser">
+    <div *ngIf="emptyErrorMessage; else getErrorMessage">
+      <table>
+        <tr>
+          <th>Id</th>
+          <th>Фамилия</th>
+          <th>Имя</th>
+          <th>Отчество</th>
+        </tr>
+        <tr>
+          <td>{{user.id}}</td>
+          <td>{{user.lastName}}</td>
+          <td>{{user.firstName}}</td>
+          <td>{{user.fatherName}}</td>
+        </tr>
+      </table>
+    </div>
+
+    <ng-template #getErrorMessage>
+      <p>{{user.errorMessage}}</p>
+    </ng-template>
+  </div>
+</div>
